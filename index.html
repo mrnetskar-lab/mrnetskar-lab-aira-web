@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GRID · Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="backdrop" id="backdrop"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark" id="brandMark"></span>
+    <span>GRID</span>
+  </div>
+  <nav>
+    <a>Home</a>
+    <a class="active">Hub</a>
+    <a>Inbox</a>
+    <a>Profiles</a>
+  </nav>
+  <div class="status">
+    <span class="dot"></span>
+    <span>4 nodes · signal stable</span>
+  </div>
+</header>
+
+<main class="hub">
+
+  <aside class="sidebar">
+    <div class="section-label">Channels</div>
+    <label class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input placeholder="Search signals…" />
+    </label>
+
+    <div class="channel-list" id="channelList"></div>
+  </aside>
+
+  <section class="chat" id="chat">
+    <header class="chat-head">
+      <div class="hero-portrait" id="focusRing" data-ring="warming" style="--ch-hue: var(--channel-hue);">
+        <img id="heroImg" src="assets/profile_pictures/nina_profile.png" alt="" />
+      </div>
+      <div class="hero-meta">
+        <p class="eyebrow" id="focusRoute">THE RETURN</p>
+        <h1 class="title" id="focusName">Nina</h1>
+        <p class="whisper" id="focusWhisper">Still holding the thread.</p>
+        <div class="subline">
+          <span class="state" id="focusState">WARMING</span>
+          <span class="sep">·</span>
+          <span id="focusTone">SOFT</span>
+          <span class="sep">·</span>
+          <span class="typing" id="focusTyping" style="display:none;">
+            typing<span class="dots"><span></span><span></span><span></span></span>
+          </span>
+          <span id="focusIdle">signal stable</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button>Route</button>
+        <button>Full thread</button>
+      </div>
+    </header>
+
+    <div class="thread" id="thread"></div>
+
+    <form class="composer" id="composer" onsubmit="return false;">
+      <div class="input-wrap">
+        <input id="input" placeholder="Transmit…" autocomplete="off" />
+      </div>
+      <button type="submit" class="send" aria-label="Send">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <aside class="dossier" id="dossier">
+    <div class="portrait">
+      <img id="portraitImg" src="assets/profile_pictures/nina_profile.png" alt="Portrait" onerror="this.style.opacity=0" />
+      <span class="node-id" id="nodeId">NODE · NINA</span>
+    </div>
+
+    <h2 class="dossier-name" id="dName">Nina</h2>
+    <p class="dossier-route" id="dRoute">THE RETURN</p>
+    <p class="dossier-bio" id="dBio">Warm and familiar. You knew each other before — years of silence between you, but the closeness never fully left.</p>
+
+    <div class="meters">
+      <div class="meter"><span class="k">Pull</span><span class="bar"><span id="mPull" style="--v: 74%;"></span></span><span class="v" id="vPull">0.74</span></div>
+      <div class="meter"><span class="k">Memory</span><span class="bar"><span id="mMem" style="--v: 58%;"></span></span><span class="v" id="vMem">0.58</span></div>
+    </div>
+
+    <div class="anchors" id="anchors"></div>
+
+    <div class="legend">
+      <div class="title">Ring · state</div>
+      <div class="row"><span class="swatch s1"></span><span class="label">Warming</span></div>
+      <div class="row"><span class="swatch s2"></span><span class="label">Pull active</span></div>
+      <div class="row"><span class="swatch s3"></span><span class="label">Open</span></div>
+      <div class="row"><span class="swatch s4"></span><span class="label">Faded</span></div>
+    </div>
+  </aside>
+
+</main>
+
+<aside class="tweaks" id="tweaks">
+  <h4>Tweaks</h4>
+  <label>Tone
+    <select id="tTone">
+      <option value="soft">soft</option>
+      <option value="tender">tender</option>
+      <option value="neutral">neutral</option>
+      <option value="guarded">guarded</option>
+      <option value="playful">playful</option>
+      <option value="cold">cold</option>
+    </select>
+  </label>
+  <label>State
+    <select id="tState">
+      <option>dormant</option>
+      <option selected>warming</option>
+      <option value="pull">pull-active</option>
+      <option>opening</option>
+      <option>open</option>
+      <option>faded</option>
+    </select>
+  </label>
+  <label>Glow
+    <input id="tGlow" type="range" min="0" max="100" value="55" />
+  </label>
+</aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
